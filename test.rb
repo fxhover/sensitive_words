@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-$LOAD_PATH << '/Users/fangxiang/work/ruby/sensitive_words/lib'
+$LOAD_PATH << File.join(File.dirname(__FILE__), 'lib')
 require 'sensitive_words'
 
 #首先载入敏感词词典
