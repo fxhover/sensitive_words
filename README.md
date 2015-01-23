@@ -4,11 +4,14 @@
 
 
 ### Install
-
 ```sh
-$ gem install sensitive_words
+$ git clone git@github.com:fxhover/sensitive_words.git
+$ cd sensitive_words
+$ gem install sensitive_words-0.0.1.gem
 ```
 
+###Install in Rails
+gem 'sensitive_words', git: 'https://github.com/fxhover/sensitive_words.git'
 
 ### Test code
 
@@ -21,6 +24,9 @@ require 'sensitive_words'
 SensitiveWords.load_dict("#{__dir__}/dictionary/dict1.txt")
 SensitiveWords.load_dict("#{__dir__}/dictionary/dict2.txt") #可以载入多次
 
+#也可以从ruby数组载入敏感词
+SensitiveWords.add_dict_from_arr %w(习近平 周永康 暴干 BLOWJOB 流氓政府 FUCKYOU FUCK 你大爷)
+
 article = "习近平周永暴干康BLOWJOBjeffrey哈哈哈流氓政府"
 
 #找出文章中的所有敏感词
@@ -30,6 +36,9 @@ puts words.inspect   # => ["习近平", "暴干", "BLOWJOB", "流氓政府"]
 #或者只需要指定数量上限的敏感词
 words = SensitiveWords.sensitive_words(article,2)
 puts words.inspect   # => ["习近平", "暴干"]
+
+#清除敏感词字典
+SensitiveWords.clear_dict
 ```
 
 ### 敏感词文件示例
